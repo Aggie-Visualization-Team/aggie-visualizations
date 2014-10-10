@@ -1,0 +1,20 @@
+extends layout
+
+block content 
+  h1.
+    Incidents
+  table.table-striped
+    caption
+      | Table of Incidents
+    thead: tr
+      th Title
+      th Assigned To
+      th Location Name
+      th Notes
+    tbody
+      each incident, i in incidents
+        tr
+          td= incident.title
+          td= incident.assignedTo
+          td= incident.locationName
+          td= incident.notes

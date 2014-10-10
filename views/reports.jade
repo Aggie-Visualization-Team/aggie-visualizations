@@ -1,0 +1,19 @@
+extends layout
+
+block content 
+  h1.
+    Reports
+  table.table-striped
+    caption
+      | Table of Reports
+    thead: tr
+      th Source NickName
+      th Author
+      th Content
+    tbody
+      each report, i in reports
+        tr
+          td
+              a(href='/reports/' + report._id)=report._sourceNickname
+          td= report.author
+          td= report.content

@@ -1,0 +1,18 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css')
+    script(src='/javascripts/jquery-2.1.1.min.js')
+    script(src='/javascripts/bootstrap.min.js')
+
+    if (title=='Map')
+        script(src='https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyD918c73stV0tmTnXse3T4pJpsr6MYaCNM&sensor=true')
+
+  body
+    include header
+    block content
+    include footer
+    script.
+        $('#newsAlerts').hide();

@@ -1,0 +1,17 @@
+extends layout
+
+block content 
+  h1.
+    #{report._sourceNickname}
+  h2. 
+    By - #{report.author}
+
+  h4.
+    Authored At - #{report.authoredAt}
+  h4
+    |Source - 
+    a(href='/sources/' + report._source)=report._sourceNickname
+  h4. 
+    Content 
+  p. 
+    #{report.content}

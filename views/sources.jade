@@ -1,0 +1,19 @@
+extends layout
+
+block content 
+  h1.
+    Sources
+  table.table-striped
+    caption
+      | Table of Sources
+    thead: tr
+      th Nickname
+      th Type
+      th Url
+    tbody
+      each source, i in sources
+        tr
+          td
+            a(href='/sources/' + source._id)=source.nickname
+          td= source.type
+          td= source.url
