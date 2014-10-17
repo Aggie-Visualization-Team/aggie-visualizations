@@ -10,11 +10,6 @@ var monk = require('monk');
 var db = monk('mongodb://trey:123456@ds043190.mongolab.com:43190/aggie_viz');
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
-var sources = require('./routes/sources');
-var reports = require('./routes/reports');
-var incidents = require('./routes/incidents');
-
 
 var app = express();
 
@@ -36,10 +31,7 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-app.use('/users', users);
-app.use('/sources', sources);
-app.use('/reports', reports);
-app.use('/incidents', incidents);
+
 
 
 // catch 404 and forward to error handler

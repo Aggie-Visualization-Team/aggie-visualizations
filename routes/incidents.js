@@ -15,10 +15,10 @@ router.get('/', function(req, res) {
 
 router.get('/:id', function(req, res) {
   var db = req.db;
-  var collection = db.get('incidents').fi;
-  collection.find({locationName:{$exists:true}},{},function(e,docs){
+  var collection = db.get('incidents');
+  collection.find({'_id': ObjectId(req.params['id'])},{},function(e,docs){
     res.render('incidents', {
-      incidents : entity,
+      incidents : docs[0],
       title: 'Incidents'
     });
   });
