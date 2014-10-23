@@ -7,7 +7,9 @@ var bodyParser = require('body-parser');
 
 var mongo = require('mongodb');
 var monk = require('monk');
-var db = monk('mongodb://trey:123456@ds043190.mongolab.com:43190/aggie_viz');
+var port = process.env.PORT || 3000;
+var url = process.env.MONGOLAB_URI || "mongodb://localhost/aggie_viz"
+var db = monk(url);
 
 var routes = require('./routes/index');
 
