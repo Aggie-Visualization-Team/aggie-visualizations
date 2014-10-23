@@ -1,0 +1,17 @@
+extends layout
+
+block content 
+  h1.
+    #{incident.title}
+  h2. 
+    Assigned To - #{incident.assignedTo}
+
+  h4.
+    Stored At - #{incident.storedAt}
+  h4
+    |Status - 
+    #{incident.status}
+  h4. 
+    Notes 
+  p. 
+    #{incident.notes}

@@ -1,12 +1,12 @@
+var app = require('./../app');
 var express = require('express');
 var router = express.Router();
 
-var users = require('./users');
 var sources = require('./sources');
 var reports = require('./reports');
 var incidents = require('./incidents');
+var MongoClient = require('mongodb').MongoClient;
 
-router.use('/users',users);
 router.use('/sources',sources);
 router.use('/reports',reports);
 router.use('/incidents',incidents);
@@ -18,13 +18,10 @@ router.get('/', function(req, res) {
 
 
 router.get('/map', function(req, res){
-  var db = req.db;
-  var collection = db.get('incidents');
-  collection.find({locationName:{$exists:true}},{limit:100},function(e,docs){
-    res.render('map', {
-      markers : docs,
-      title: 'Map'
-    });
+  res.render('map', {
+    markers : null,
+    title: 'Map'
   });
 });
+
 module.exports = router;

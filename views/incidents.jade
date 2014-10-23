@@ -14,7 +14,8 @@ block content
     tbody
       each incident, i in incidents
         tr
-          td= incident.title
+          td 
+            a(href='/incidents/' + incident._id)=incident.title
           td= incident.assignedTo
           td= incident.locationName
           td= incident.notes

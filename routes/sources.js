@@ -2,11 +2,9 @@ var express = require('express');
 var router = express.Router();
 var ObjectId = require('mongodb').ObjectID;
 
-/* GET users listing. */
+/* GET source docs. */
 router.get('/', function(req, res) {
-  var db = req.db;
-  var collection = db.get('sources');
-  collection.find({},{},function(e,docs){
+  req.db.get('sources').find({},{},function(e,docs){
     res.render('sources', {
       sources : docs,
       title: 'Sources'
@@ -14,13 +12,13 @@ router.get('/', function(req, res) {
   });
 });
 
+/* GET source by id */
 router.get('/:id', function(req, res) {
-  var db = req.db;
-  var entity = db.get('sources').find({'_id': ObjectId(req.params['id'])},{},function(e,docs){
-  res.render('source', {
-      source: docs[0],
-      title: 'Sources',
-      date: new Date(docs[0].datetime).toString()
+  req.db.get('sources').findOne({'_id': ObjectId(req.params['id'])},{},function(e,source){
+    res.render('source', {
+        source: source,
+        title: 'Sources',
+        date: new Date(source.datetime).toString()
     });
   });
 });

@@ -3,11 +3,9 @@ var router = express.Router();
 var ObjectId = require('mongodb').ObjectID;
 
 
-/* GET users listing. */
+/* GET report docs. */
 router.get('/', function(req, res) {
-  var db = req.db;
-  var collection = db.get('reports');
-  collection.find({},{limit:50},function(e,docs){
+  req.db.get('reports').find({},{limit:50},function(e,docs){
     res.render('reports', {
       reports : docs,
       title: 'Reports'
@@ -15,12 +13,11 @@ router.get('/', function(req, res) {
   });
 });
 
+/*GET report by id */
 router.get('/:id', function(req, res) {
-  var db = req.db;
-  var collection = db.get('reports');
-  collection.find({'_id': ObjectId(req.params['id'])},{},function(e,docs){
+  req.db.get('reports').findOne({'_id': ObjectId(req.params['id'])},{},function(e,report){
     res.render('report', {
-      report : docs[0],
+      report : report,
       title: 'Reports'
     });
   });

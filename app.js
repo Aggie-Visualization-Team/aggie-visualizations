@@ -4,9 +4,9 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var mongo = require('mongodb');
 var monk = require('monk');
+
 var port = process.env.PORT || 3000;
 var url = process.env.MONGOLAB_URI || "mongodb://localhost/aggie_viz"
 var db = monk(url);
@@ -33,8 +33,6 @@ app.use(function(req,res,next){
 });
 
 app.use('/', routes);
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -67,7 +65,4 @@ app.use(function(err, req, res, next) {
     });
 });
 
-
 module.exports = app;
-
-
