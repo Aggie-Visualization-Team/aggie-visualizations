@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-var debug = require('debug')('aggiemap');
+var debug = require('debug')('aggie-visualizations');
 var app = require('../app');
 
 app.set('port', process.env.PORT || 3000);

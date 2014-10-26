@@ -15,8 +15,7 @@ router.use('/incidents',incidents);
 router.get('/', function(req, res) {
   res.render('index', { title: 'Aggie Visualization Test' });
 });
-
-
+ 
 router.get('/map', function(req, res){
   res.render('map', {
     markers : null,
