@@ -17,10 +17,17 @@ router.get('/', function(req, res) {
 });
  
 router.get('/map', function(req, res){
-  res.render('map', {
-    markers : null,
-    title: 'Map'
+  req.db.get('incidents').distinct('locationName',function(e,docs){
+    res.render('map', {
+      locations : docs,
+      title: 'Map'
+    });
   });
 });
+router.get('/viz',function(req,res){
+  res.render('viz',{
+    title: 'Viz'
+  })
+})
 
 module.exports = router;
