@@ -17,9 +17,12 @@ router.get('/', function(req, res) {
 });
  
 router.get('/map', function(req, res){
-  res.render('map', {
-    markers : null,
-    title: 'Map'
+  var collection = req.db.get('incidents');
+  req.db.get('incidents').find({locationName:{$exists:true}},{locationName:true},function(e,docs){ 
+    res.render('map', {
+      locations: docs,
+      title: 'Map'
+    });
   });
 });
 

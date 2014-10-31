@@ -54,12 +54,8 @@ block content
 		google.maps.event.addDomListener(window, 'load', initialize);
 	div#panel
 		select#address
-			option(value='Select value') Select City
-			option(value='Ekiti') Ekiti
-			option(value='Benin City') Benin City
-			option(value='Port Harcourt') Port Harcourt
-			option(value='Kano') Kano
-			option(value='Ibadan') Ibadan
+			each location , i in locations
+				option(value=location.locationName)=location.locationName
 		input(type='button', value='Geocode', onclick='codeAddress()')
 	div#map-canvas
 		
