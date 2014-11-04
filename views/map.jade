@@ -54,9 +54,8 @@ block content
 		google.maps.event.addDomListener(window, 'load', initialize);
 	div#panel
 		select#address
-			each location, i in locations
-				option(value='#{location}') location
-			
+			each location , i in locations
+				option(value=location.locationName)=location.locationName
 		input(type='button', value='Geocode', onclick='codeAddress()')
 	div#map-canvas
 		

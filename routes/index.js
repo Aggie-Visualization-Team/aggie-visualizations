@@ -17,9 +17,9 @@ router.get('/', function(req, res) {
 });
  
 router.get('/map', function(req, res){
-  req.db.get('incidents').distinct('locationName',function(e,docs){
+  req.db.get('incidents').find({locationName:{$exists:true}},{locationName:true},function(e,docs){ 
     res.render('map', {
-      locations : docs,
+      locations: docs,
       title: 'Map'
     });
   });
