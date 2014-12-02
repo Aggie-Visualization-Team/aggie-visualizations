@@ -26,4 +26,14 @@ router.get('/map', function(req, res){
   });
 });
 
+router.get('/viz', function(req, res) {
+  var collection = req.db.get('incidents');
+  req.db.get('incidents').find({locationName:{$exists:true}},{locationName:true},function(e,docs){ 
+    res.render('viz', {
+      sources: docs,
+      title: 'Viz'
+    });
+  });
+});
+
 module.exports = router;
